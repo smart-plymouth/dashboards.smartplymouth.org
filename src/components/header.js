@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from "react-router-dom";
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -7,7 +8,6 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import Icon from '@mui/material/Icon';
 
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
@@ -58,15 +58,23 @@ const Header = () => {
               onClose={handleCloseUserMenu}
             >
               <MenuItem onClick={handleCloseUserMenu}>
-                <Typography textAlign="center"><LocalHospitalIcon /> Urgent Care Wait Times</Typography>
+                <Typography textAlign="center">
+                  <Link to='/urgent-care'>
+                    <Button><LocalHospitalIcon /> Urgent Care Wait Times</Button>
+                  </Link>
+                </Typography>
               </MenuItem>
               <MenuItem onClick={handleCloseUserMenu}>
-                <Typography textAlign="center"><PedalBikeIcon /> Beryl Bikes</Typography>
+                <Typography textAlign="center">
+                  <Link to='/beryl-bikes'>
+                    <Button><PedalBikeIcon /> Beryl Bikes</Button>
+                  </Link>
+                </Typography>
               </MenuItem>
             </Menu>
           </Box>
           <Typography variant="h6" component="div" sx={{ flexGrow: 0 }}>
-            Smart Plymouth Dashboards
+              Smart Plymouth Dashboards
           </Typography>
         </Toolbar>
       </AppBar>
