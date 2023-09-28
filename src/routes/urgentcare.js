@@ -21,11 +21,13 @@ const UrgentCare = () => {
   const [selectedFacilityData, setSelectedFacilityData] = React.useState({});
 
   const updateSelectedDateRange = async (value) => {
-    setSelectedDateRange(value);
+    await setSelectedDateRange(value);
+    updateFacilityData(selectedFacility);
   }
 
   const updateFacilityData = async (facility_id) => {
-    const data = await fetch('https://emergency-department-wait-times.api.smartplymouth.org/facilities/' + facility_id).then(function(response) {
+    const dateArgs = "?start=" + selectedDateRange[0].toISOString() + "&end=" + selectedDateRange[1].toISOString()
+    const data = await fetch('https://emergency-department-wait-times.api.smartplymouth.org/facilities/' + facility_id + dateArgs).then(function(response) {
       return response.json();
     });
     const chartData = data.data.map((row) => {
@@ -76,7 +78,7 @@ const UrgentCare = () => {
             <center>
                 Select Facility:
                 <br />
-                <Select
+                <Select style={{maxWidth: 250}}
                     id="selectFacility"
                     value={selectedFacility}
                     label="Age"
