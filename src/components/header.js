@@ -74,7 +74,7 @@ const Header = () => {
             </Menu>
           </Box>
           <Typography variant="h6" component="div" sx={{ flexGrow: 0 }}>
-              Smart Plymouth Dashboards
+              Smart Plymouth
           </Typography>
         </Toolbar>
       </AppBar>
