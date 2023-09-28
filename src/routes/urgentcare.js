@@ -30,16 +30,23 @@ const UrgentCare = () => {
     const data = await fetch('https://emergency-department-wait-times.api.smartplymouth.org/facilities/' + facility_id + dateArgs).then(function(response) {
       return response.json();
     });
-    const chartData = data.data.map((row) => {
+    const waitChartData = data.data.map((row) => {
         return [
           row.dt,
-          row.longest_wait,
+          row.longest_wait
+        ];
+    });
+    waitChartData[0] = ["Date/Time", "Longest Wait (mins)"];
+    data.waitChartData = waitChartData;
+    const patientChartData = data.data.map((row) => {
+        return [
+          row.dt,
           row.patients_in_department,
           row.patients_waiting
         ];
     });
-    chartData[0] = ["Date/Time", "Longest Wait (mins)", "Patients in Department", "Patients Waiting"];
-    data.chartData = chartData;
+    patientChartData[0] = ["Date/Time", "Patients in Department", "Patients Waiting"];
+    data.patientChartData = patientChartData;
     setSelectedFacilityData(data);
   }
 
@@ -111,7 +118,16 @@ const UrgentCare = () => {
               chartType="LineChart"
               width="100%"
               height="400px"
-              data={ selectedFacilityData.chartData }
+              data={ selectedFacilityData.waitChartData }
+              options={ chartOptions }
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Chart
+              chartType="LineChart"
+              width="100%"
+              height="400px"
+              data={ selectedFacilityData.patientChartData }
               options={ chartOptions }
             />
           </Grid>
