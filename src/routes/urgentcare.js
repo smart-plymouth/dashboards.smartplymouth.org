@@ -27,7 +27,7 @@ const UrgentCare = () => {
 
   const updateFacilityData = async (facility_id) => {
     const dateArgs = "?start=" + selectedDateRange[0].toISOString() + "&end=" + selectedDateRange[1].toISOString()
-    const data = await fetch('https://emergency-department-wait-times.api.smartplymouth.org/facilities/' + facility_id + dateArgs).then(function(response) {
+    const data = await fetch('https://ed-wait-times-api.smartplymouth.org/facilities/' + facility_id + dateArgs).then(function(response) {
       return response.json();
     });
     const waitChartData = data.data.map((row) => {
@@ -59,7 +59,7 @@ const UrgentCare = () => {
 
   React.useEffect(() => {
     const setUp = async () => {
-        const facility_data = await fetch('https://emergency-department-wait-times.api.smartplymouth.org/facilities').then(function(response) {
+        const facility_data = await fetch('https://ed-wait-times-api.smartplymouth.org/facilities').then(function(response) {
             return response.json();
         });
         setFacilities(facility_data['facilities']);

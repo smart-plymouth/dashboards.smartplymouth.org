@@ -12,11 +12,11 @@ const UrgentCareHUD = () => {
 
   const fetchData = async () => {
     console.log("Fetching data...");
-    const data = await fetch('https://emergency-department-wait-times.api.smartplymouth.org/facilities').then(function(response) {
+    const data = await fetch('https://ed-wait-times-api.smartplymouth.org/facilities').then(function(response) {
       return response.json();
     });
     const fetchedFacilities = await Promise.all(data.facilities.map(async (facility) => {
-      const data = await fetch('https://emergency-department-wait-times.api.smartplymouth.org/facilities/' + facility.id).then(function(response) {
+      const data = await fetch('https://ed-wait-times-api.smartplymouth.org/facilities/' + facility.id).then(function(response) {
         return response.json();
       });
       data.latest = data.data.pop();
