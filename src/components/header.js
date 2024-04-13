@@ -64,13 +64,6 @@ const Header = () => {
                   </Link>
                 </Typography>
               </MenuItem>
-              <MenuItem onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">
-                  <Link to='/beryl-bikes'>
-                    <Button><PedalBikeIcon /> Beryl Bikes</Button>
-                  </Link>
-                </Typography>
-              </MenuItem>
             </Menu>
           </Box>
           <Typography variant="h6" component="div" sx={{ flexGrow: 0 }}>

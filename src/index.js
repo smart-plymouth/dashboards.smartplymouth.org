@@ -11,8 +11,6 @@ import UrgentCareMenu from "./routes/urgentcare-menu";
 import UrgentCare from "./routes/urgentcare";
 import UrgentCareHUD from "./routes/urgentcare-livehud";
 
-import BerylBikes from "./routes/berylbikes";
-
 import Container from '@mui/material/Container';
 
 
@@ -27,7 +25,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="/urgent-care" element={<UrgentCareMenu />} />
           <Route path="/urgent-care/history" element={<UrgentCare />} />
           <Route path="/urgent-care/live-hud" element={<UrgentCareHUD />} />
-          <Route path="/beryl-bikes" element={<BerylBikes />} />
         </Routes>
       </Container>
     </Router>
